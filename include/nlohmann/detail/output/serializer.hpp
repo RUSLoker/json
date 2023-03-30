@@ -828,12 +828,12 @@ class serializer
     void dump_float(number_float_t x, std::false_type /*is_ieee_single_or_double*/)
     {
         // get number of digits for a float -> text -> float round-trip
-        static constexpr auto d = std::numeric_limits<number_float_t>::max_digits10;
+        static constexpr auto d = 8;
 
         // the actual conversion
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg,hicpp-vararg)
         std::ptrdiff_t len = (std::snprintf)(number_buffer.data(), number_buffer.size(),
-                                             std::is_same<number_float_t, long double>::value ? "%.*Lg" : "%.*g",
+                                             std::is_same<number_float_t, long double>::value ? "%.*Lf" : "%.*f",
                                              d, x);
 
         // negative value indicates an error
