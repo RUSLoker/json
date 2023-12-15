@@ -1,9 +1,9 @@
 //     __ _____ _____ _____
 //  __|  |   __|     |   | |  JSON for Modern C++ (supporting code)
-// |  |  |__   |  |  | | | |  version 3.11.2
+// |  |  |__   |  |  | | | |  version 3.11.3
 // |_____|_____|_____|_|___|  https://github.com/nlohmann/json
 //
-// SPDX-FileCopyrightText: 2013-2022 Niels Lohmann <https://nlohmann.me>
+// SPDX-FileCopyrightText: 2013-2023 Niels Lohmann <https://nlohmann.me>
 // SPDX-License-Identifier: MIT
 
 #include "doctest_compatibility.h"
@@ -119,13 +119,13 @@ TEST_CASE("README" * doctest::skip())
 
             // serialization with pretty printing
             // pass in the amount of spaces to indent
-            std::cout << j.dump(4) << std::endl;
+            std::cout << j.dump(4) << std::endl; // NOLINT(performance-avoid-endl)
             // {
             //     "happy": true,
             //     "pi": 3.141
             // }
 
-            std::cout << std::setw(2) << j << std::endl;
+            std::cout << std::setw(2) << j << std::endl; // NOLINT(performance-avoid-endl)
         }
 
         {
