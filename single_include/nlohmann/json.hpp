@@ -18798,7 +18798,11 @@ class serializer
     void dump_float(number_float_t x, std::false_type /*is_ieee_single_or_double*/)
     {
         // get number of digits for a float -> text -> float round-trip
-        static constexpr auto d = 8;
+#ifdef SERIALIZER_DIGITS_AFTER_POINT
+        static constexpr auto d = SERIALIZER_DIGITS_AFTER_POINT;
+#else
+        static constexpr auto d = std::numeric_limits<number_float_t>::max_digits10;
+#endif
 
         // the actual conversion
         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg,hicpp-vararg)
