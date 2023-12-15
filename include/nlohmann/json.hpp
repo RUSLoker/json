@@ -137,7 +137,7 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
     )
     {
         return ::nlohmann::detail::parser<basic_json, InputAdapterType>(std::move(adapter),
-                std::move(cb), allow_exceptions, ignore_comments);
+               std::move(cb), allow_exceptions, ignore_comments);
     }
 
   private:
@@ -940,8 +940,8 @@ class basic_json // NOLINT(cppcoreguidelines-special-member-functions,hicpp-spec
             {
                 auto element = element_ref.moved_or_copied();
                 m_data.m_value.object->emplace(
-                    std::move(*((*element.m_data.m_value.array)[0].m_data.m_value.string)),
-                    std::move((*element.m_data.m_value.array)[1]));
+                          std::move(*((*element.m_data.m_value.array)[0].m_data.m_value.string)),
+                          std::move((*element.m_data.m_value.array)[1]));
             }
         }
         else
